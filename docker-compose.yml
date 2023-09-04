@@ -1,0 +1,22 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres"
+    container_name: postgres-alura-go-api-gin
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root      
+    ports:
+      - "5432:5432"
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: pagadmin-alura-go-rest-api-gin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@email.com"
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    ports:
+      - "54321:80"
+    depends_on:
+      - postgres
